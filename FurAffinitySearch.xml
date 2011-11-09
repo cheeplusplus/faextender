@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+    <ShortName>FurAffinity</ShortName>
+    <LongName>FurAffinity Search</LongName>
+    <Description>Search through FurAffinity</Description>
+    <Contact>faextender@neocodenetworks.com</Contact>
+    <InputEncoding>UTF-8</InputEncoding>
+    <Image width="16" height="16" type="image/x-icon">http://www.furaffinity.net/favicon.ico</Image>
+    <Url type="text/html" method="GET" template="http://www.furaffinity.net/search/?q={searchTerms}"/>
+</OpenSearchDescription>
