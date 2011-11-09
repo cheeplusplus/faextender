@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" id="faextender-overlay">
+	<script type="application/x-javascript" src="chrome://faextender/content/Base.js"></script>
+	<script type="application/x-javascript" src="chrome://faextender/content/ImageDownload.js"></script>
+	<script type="application/x-javascript" src="chrome://faextender/content/OpenFolder.js"></script>
+	<script type="application/x-javascript" src="chrome://faextender/content/OpenInTabs.js"></script>
+	<script type="application/x-javascript">
+		// Bind us to the browser window
+		gBrowser.addEventListener("DOMContentLoaded", com.neocodenetworks.faextender.Base.onPageLoad, true);
+	</script>
+</overlay>

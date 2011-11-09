@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- FAExtender settings -->
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<dialog xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="faextender-settings" title="FurAffinity Extender Settings"
+	onload="return settings.doLoad();"
+	buttons="accept,cancel" buttonlabelcancel="Cancel" buttonlabelaccept="Save"
+	ondialogaccept="return settings.doSave();" ondialogcancel="return true;">
+	<script type="application/x-javascript" src="chrome://faextender/content/Base.js"></script>
+	<script type="application/x-javascript" src="chrome://faextender/content/Settings.js"></script>
+	<script type="application/x-javascript">
+		var settings = new com.neocodenetworks.faextender.Settings();
+	</script>
+	
+	<dialogheader title="Options" description="Download preferences" />
+
+	<hbox>
+		<label value="Save directory:" />
+		<textbox id="dir" size="50" disabled="true" />
+		<button id="browsebutton" label="Browse" accesskey="b"
+			oncommand="settings.browseDir();"
+			tooltiptext="Browse for a directory to save images in." />
+	</hbox>
+	
+	<hbox>
+		<checkbox id="makenewdir" label="Create artist subdirectories"
+			tooltiptext="Have a subdirectory for each individual artist in your save directory." />
+	</hbox>
+	<hbox>
+		<checkbox id="delaytabs" label="Delay opening each tab in &quot;Open images in tabs&quot;"
+			tooltiptext="Use this if you keep getting 502 errors when using the open in tabs feature." />
+	</hbox>
+</dialog>

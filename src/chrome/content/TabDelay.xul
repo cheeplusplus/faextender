@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Open in tabs delay -->
+<?xml-stylesheet href="chrome://global/skin/global.css" type="text/css"?>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	id="faextender-tabdelay" title="FurAffinity Redirecting" orient="vertical"
+	onload="return com.neocodenetworks.faextender.TabDelay();">
+	<script type="application/x-javascript" src="chrome://faextender/content/TabDelay.js"></script>
+	<html:link rel="icon" href="resource://faextender/icon.png" style="display: none;" />
+	
+	<spring flex="1" />
+	<html:html style="width: 100%; text-align: center; font-size: x-large;">
+		<html:span style="color: blue; font-size: xx-large; font-weight: bold;">FurAffinity Extender</html:span><html:br />
+		<html:br />
+		is now redirecting you to<html:br />
+		<html:a id="redirURL"></html:a><html:br />
+		<html:span id="redirTime"></html:span>
+	</html:html>
+	
+	<html:html style="width: 100%; font-weight: bold; font-size: xx-large; font-family: sans-serif; text-align: center;">
+
+	</html:html>
+	<spring flex="1" /> 
+</window>

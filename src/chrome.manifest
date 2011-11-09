@@ -1,0 +1,3 @@
+content	faextender								chrome/content/
+resource faextender								chrome/resources/
+overlay	chrome://browser/content/browser.xul	chrome://faextender/content/BrowserBind.xul
