@@ -59,9 +59,9 @@ com.neocodenetworks.faextender.Settings = function() {
 			makenewdir.checked = prefs.getBoolPref("extensions.faext.download.newdir");
 		}
 		
-		if (prefs.getPrefType("extensions.faext.download.instantly") != Components.interfaces.nsIPrefBranch.PREF_INVALID) {
-			var downloadinstantly = document.getElementById("downloadinstantly");
-			downloadinstantly.checked = prefs.getBoolPref("extensions.faext.download.instantly");
+		if (prefs.getPrefType("extensions.faext.download.autodownload") != Components.interfaces.nsIPrefBranch.PREF_INVALID) {
+			var autodownload = document.getElementById("autodownload");
+			autodownload.checked = prefs.getBoolPref("extensions.faext.download.autodownload");
 		}
 		
 		if (prefs.getPrefType("extensions.faext.openintabs.delay") != Components.interfaces.nsIPrefBranch.PREF_INVALID) {
@@ -77,14 +77,14 @@ com.neocodenetworks.faextender.Settings = function() {
 		var dir = document.getElementById("dir");
 		var makenewdir = document.getElementById("makenewdir");
 		var delaytabs = document.getElementById("delaytabs");
-		var downloadinstantly = document.getElementById("downloadinstantly");
+		var autodownload = document.getElementById("autodownload");
 	
 		if (fileObject != null) {
 			prefs.setComplexValue("extensions.faext.download.directory", Components.interfaces.nsILocalFile,fileObject);
 		}
 		
 		prefs.setBoolPref("extensions.faext.download.newdir", makenewdir.checked);
-		prefs.setBoolPref("extensions.faext.download.instantly", downloadinstantly.checked);
+		prefs.setBoolPref("extensions.faext.download.autodownload", autodownload.checked);
 		prefs.setBoolPref("extensions.faext.openintabs.delay", delaytabs.checked);
 		
 		// Immediately save preferences
