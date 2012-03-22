@@ -31,7 +31,7 @@
 			tooltiptext="Use this if you keep getting 502 errors when using the open in tabs feature." />
 	</hbox>
 	<hbox>
-		<checkbox id="downloadinstantly" label="Download Submissions instantly when loaded"
+		<checkbox id="autodownload" label="Auto Download all opened submissions"
 			tooltiptext="Use this if you want to download all Submissions instantly without having to click the &quot;Download now&quot;-link every time." />
 	</hbox>
 </dialog>
