@@ -116,8 +116,9 @@ com.neocodenetworks.faextender.ImageDownload = {
 
 		// Handle link onclick event
 		downloadLink.click(com.neocodenetworks.faextender.ImageDownload.DownloadClickEvent);
-		//Auto Download of submissions
-		if (prefs.getBoolPref("extensions.faext.download.autodownload")) {
+		
+		//Auto download of submissions
+		if (prefs.getBoolPref("extensions.faext.download.auto")) {
 			downloadLink.click();
 		}
 	},

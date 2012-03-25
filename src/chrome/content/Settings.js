@@ -59,9 +59,9 @@ com.neocodenetworks.faextender.Settings = function() {
 			makenewdir.checked = prefs.getBoolPref("extensions.faext.download.newdir");
 		}
 		
-		if (prefs.getPrefType("extensions.faext.download.autodownload") != Components.interfaces.nsIPrefBranch.PREF_INVALID) {
+		if (prefs.getPrefType("extensions.faext.download.auto") != Components.interfaces.nsIPrefBranch.PREF_INVALID) {
 			var autodownload = document.getElementById("autodownload");
-			autodownload.checked = prefs.getBoolPref("extensions.faext.download.autodownload");
+			autodownload.checked = prefs.getBoolPref("extensions.faext.download.auto");
 		}
 		
 		if (prefs.getPrefType("extensions.faext.openintabs.delay") != Components.interfaces.nsIPrefBranch.PREF_INVALID) {
@@ -84,7 +84,7 @@ com.neocodenetworks.faextender.Settings = function() {
 		}
 		
 		prefs.setBoolPref("extensions.faext.download.newdir", makenewdir.checked);
-		prefs.setBoolPref("extensions.faext.download.autodownload", autodownload.checked);
+		prefs.setBoolPref("extensions.faext.download.auto", autodownload.checked);
 		prefs.setBoolPref("extensions.faext.openintabs.delay", delaytabs.checked);
 		
 		// Immediately save preferences
