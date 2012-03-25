@@ -15,6 +15,12 @@ com.neocodenetworks.faextender.OpenInTabs = {
 		// Exit if no valid links were found so we don't inject
 		if (tabLinks.length == 0) { return; }
 
+		// Flip the page link order (oldest to newest by default)
+		if (prefs.getBoolPref("extensions.faext.openintabs.reverse")) {
+			tabLinks = jQuery.makeArray(tabLinks);
+			tabLinks.reverse();
+		}
+
 		// Check to make sure if the injection point already exists
 		var openLink = jQuery("#__ext_fa_opentabs");
 		if (openLink.length > 0) { return; }
