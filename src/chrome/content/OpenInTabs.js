@@ -67,7 +67,7 @@ com.neocodenetworks.faextender.OpenInTabs = {
 					queueTime += queueTimeDelay;
 				}
 				else {
-					gBrowser.addTab(encodeURI(thisLink));
+					gBrowser.addTab(thisLink.attr("href"));
 				}
 			}
 		});
