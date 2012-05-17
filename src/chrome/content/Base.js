@@ -33,6 +33,15 @@ com.neocodenetworks.faextender.Base = {
 		// Return jQuery object
 		return jQuery;
 	},
+	
+	loadjQueryHotkeys: function(doc) {
+		// Inject into the jQuery library
+		var jQueryEnv = { jQuery: com.neocodenetworks.faextender.Base.getjQuery(doc) };
+
+		// Load script
+		var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);  
+		loader.loadSubScript("resource://faextender/jquery.hotkeys.js", jQueryEnv);
+	},
 
 	// Get the prefs service
 	getPrefsService: function() {

@@ -34,4 +34,8 @@
 		<checkbox id="autodownload" label="Auto download all opened submissions"
 			tooltiptext="Use this if you want to download all submissions automatically without having to click &quot;Download now&quot; each time." />
 	</hbox>
+	<hbox>
+		<checkbox id="hotkeys" label="Enable hotkeys"
+			tooltiptext="Use this if you want to enable hotkey navigation." />
+	</hbox>
 </dialog>
