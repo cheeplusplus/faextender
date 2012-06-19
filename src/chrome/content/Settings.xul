@@ -38,4 +38,8 @@
 		<checkbox id="hotkeys" label="Enable hotkeys"
 			tooltiptext="Use this if you want to enable hotkey navigation." />
 	</hbox>
+	<hbox>
+		<checkbox id="colornotification" label="Enable background-color notifications"
+			tooltiptext="Use this if you want to have different background-colors on Submission-page (according to the file download status)." />
+	</hbox>
 </dialog>

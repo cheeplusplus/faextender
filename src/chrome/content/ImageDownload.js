@@ -20,7 +20,6 @@ com.neocodenetworks.faextender.ImageDownload = {
 			com.neocodenetworks.faextender.Base.logError("Could not find download link, aborting");
 			return;
 		}
-
 		url = url.attr("href");
 		
 		var filelessurl = url.substr(0, url.lastIndexOf("/"));
@@ -74,6 +73,13 @@ com.neocodenetworks.faextender.ImageDownload = {
 					
 					// Re-fire after configuration
 					chgMsg("Please reload the page.", "Please reload the page to use the new settings.");
+					//Color notification - Change background-color of Submission page according to file download status
+					if (prefs.getBoolPref("extensions.faext.colornotification.enable")) 
+					{
+						jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td")).css("background-color","#F7941D"); //YELLOW
+						jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td")).css("background-color","#F7941D"); //YELLOW
+					}
+					
 				}
 			});
 			return;
@@ -101,6 +107,12 @@ com.neocodenetworks.faextender.ImageDownload = {
 		var fext = fname.substr(fname.lastIndexOf(".") + 1);
 		if (fext == "") {
 			chgMsg("Error: No extension", "This file does not have an file extension. Please save it manually.");
+			//Color notification - Change background-color of Submission page according to file download status
+			if (prefs.getBoolPref("extensions.faext.colornotification.enable")) 
+			{
+				jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td")).css("background-color","#ff0000"); //RED
+				jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td")).css("background-color","#ff3b41"); //RED
+			}
 			return;
 		}
 
@@ -108,6 +120,12 @@ com.neocodenetworks.faextender.ImageDownload = {
 
 		if (fileObject.exists()) {
 			chgMsg("File already exists.","File " + fname + " already exists.");
+			//Color notification - Change background-color of Submission page according to file download status
+			if (prefs.getBoolPref("extensions.faext.colornotification.enable")) 
+			{
+				jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td")).css("background-color","#00A651"); //GREEN
+				jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td")).css("background-color","#00A651"); //GREEN
+			}
 			return;
 		}
 		
@@ -154,6 +172,12 @@ com.neocodenetworks.faextender.ImageDownload = {
 			}
 			catch(err) {
 				chgMsg("Could not create directory.", "Could not create directory '" + fileObject.path + "'");
+				//Color notification - Change background-color of Submission page according to file download status
+				if (prefs.getBoolPref("extensions.faext.colornotification.enable")) 
+				{
+					jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td")).css("background-color","#ff0000"); //RED
+					jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td")).css("background-color","#ff3b41"); //RED
+				}
 				return;
 			}
 
@@ -167,6 +191,12 @@ com.neocodenetworks.faextender.ImageDownload = {
 			try {
 				if (fileObject.exists()) {
 					chgMsg("File already exists.", "File " + fname + " already exists.");
+					//Color notification - Change background-color of Submission page according to file download status
+					if (prefs.getBoolPref("extensions.faext.colornotification.enable")) 
+					{
+						jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td")).css("background-color","#00A651"); //GREEN
+						jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td")).css("background-color","#00A651"); //GREEN
+					}
 					return;
 				}
 				
@@ -179,6 +209,12 @@ com.neocodenetworks.faextender.ImageDownload = {
 			}
 			catch(err) {
 				chgMsg("Could not create file.", "Could not create file '" + fileObject.path +"'");
+				//Color notification - Change background-color of Submission page according to file download status
+				if (prefs.getBoolPref("extensions.faext.colornotification.enable")) 
+				{
+					jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td")).css("background-color","#ff0000"); //RED
+					jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td")).css("background-color","#ff3b41"); //RED
+				}
 				return;
 			}
 
@@ -210,6 +246,12 @@ com.neocodenetworks.faextender.ImageDownload = {
 						var response = aRequest.QueryInterface(Components.interfaces.nsIHttpChannel);
 						if (response.requestSucceeded) {
 							chgMsg("File saved.","File " + fname + " saved.");
+							//Color notification - Change background-color of Submission page according to file download status
+							if (prefs.getBoolPref("extensions.faext.colornotification.enable")) 
+							{
+								jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td")).css("background-color","#00A651"); //GREEN
+								jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td")).css("background-color","#00A651"); //GREEN	
+							}
 							
 							if (fileObject.exists()) {
 								// Somehow it got saved already, don't be destructive
@@ -225,6 +267,12 @@ com.neocodenetworks.faextender.ImageDownload = {
 						else {
 							// Server returned an error
 							chgMsg("Error: " + response.responseStatus + " " + response.responseStatusText, "The server returned an error.");
+							//Color notification - Change background-color of Submission page according to file download status
+							if (prefs.getBoolPref("extensions.faext.colornotification.enable")) 
+							{
+								jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td")).css("background-color","#ff0000"); //RED
+								jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td")).css("background-color","#ff3b41"); //RED
+							}
 							
 							// Delete the file
 							tempObject.remove(false);

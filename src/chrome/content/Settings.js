@@ -73,6 +73,11 @@ com.neocodenetworks.faextender.Settings = function() {
 			var hotkeys = document.getElementById("hotkeys");
 			hotkeys.checked = prefs.getBoolPref("extensions.faext.hotkeys.enable");
 		}
+		
+		if (prefs.getPrefType("extensions.faext.colornotification.enable") != Components.interfaces.nsIPrefBranch.PREF_INVALID) {
+			var colornotification = document.getElementById("colornotification");
+			colornotification.checked = prefs.getBoolPref("extensions.faext.colornotification.enable");
+		}
 	
 		return true;
 	}
@@ -84,6 +89,7 @@ com.neocodenetworks.faextender.Settings = function() {
 		var delaytabs = document.getElementById("delaytabs");
 		var autodownload = document.getElementById("autodownload");
 		var hotkeys = document.getElementById("hotkeys");
+		var colornotification = document.getElementById("colornotification");
 	
 		if (fileObject != null) {
 			prefs.setComplexValue("extensions.faext.download.directory", Components.interfaces.nsILocalFile,fileObject);
@@ -93,6 +99,7 @@ com.neocodenetworks.faextender.Settings = function() {
 		prefs.setBoolPref("extensions.faext.download.auto", autodownload.checked);
 		prefs.setBoolPref("extensions.faext.openintabs.delay", delaytabs.checked);
 		prefs.setBoolPref("extensions.faext.hotkeys.enable", hotkeys.checked);
+		prefs.setBoolPref("extensions.faext.colornotification.enable", colornotification.checked);
 		
 		// Immediately save preferences
 		var prefService = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService);
