@@ -6,3 +6,4 @@ pref("extensions.faext.openintabs.delay",true);
 pref("extensions.faext.openintabs.delaytime",2);
 pref("extensions.faext.openintabs.reverse",true);
 pref("extensions.faext.hotkeys.enable",false);
+pref("extensions.faext.colornotification.enable",false);
