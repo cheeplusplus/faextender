@@ -20,7 +20,6 @@ com.neocodenetworks.faextender.ImageDownload = {
 			com.neocodenetworks.faextender.Base.logError("Could not find download link, aborting");
 			return;
 		}
-		
 		url = url.attr("href");
 		
 		var filelessurl = url.substr(0, url.lastIndexOf("/"));
