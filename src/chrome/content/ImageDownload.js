@@ -140,6 +140,11 @@ com.neocodenetworks.faextender.ImageDownload = {
 			info.downloadSpan.attr("title", alt);
 		};
 	
+		// Fix protocol-less URLs
+		if (url.substr(0, 2) == "//") {
+			url = doc.location.protocol + url;
+		}
+
 		try {
 			var fileObject = prefs.getComplexValue("extensions.faext.download.directory", Components.interfaces.nsILocalFile);
 
@@ -230,10 +235,13 @@ com.neocodenetworks.faextender.ImageDownload = {
 							tempObject.remove(false);
 						}
 					}
-				}
-			}
+				},
+				onStatusChange: function(aWebProgress, aRequest, aStatus, aMessage) { }
+			};
 
-			persist.saveURI(uri, cachekey, referrer, null, null, tempObject);
+			var privacyContext = doc.defaultView.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsIWebNavigation).QueryInterface(Components.interfaces.nsILoadContext);
+
+			persist.saveURI(uri, cachekey, referrer, null, null, tempObject, privacyContext);
 		}
 		catch(err) {
 			com.neocodenetworks.faextender.Base.logException(err);
