@@ -10,11 +10,8 @@ com.neocodenetworks.faextender.OpenFolder = {
 		var prefs = com.neocodenetworks.faextender.Base.getPrefsService();
 		var jQuery = com.neocodenetworks.faextender.Base.getjQuery(doc);
 
-		var url = jQuery("#submissionImg").attr("src");
-
-		if (!url) {
-			return;	
-		}
+		var url = com.neocodenetworks.faextender.Base.getDownloadUrl(doc, jQuery);
+		if (!url) return;
 		
 		if (!prefs.prefHasUserValue("extensions.faext.download.directory")) {
 			// Not yet set up

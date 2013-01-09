@@ -13,16 +13,10 @@ com.neocodenetworks.faextender.ImageDownload = {
 		var prefs = com.neocodenetworks.faextender.Base.getPrefsService();
 		var jQuery = com.neocodenetworks.faextender.Base.getjQuery(doc);
 
-		// Use Download link
-		var url = jQuery("a:contains('Download')", jQuery("#submission"));
-		if (url.length == 0) {
-			// No download at all
-			com.neocodenetworks.faextender.Base.logError("Could not find download link, aborting");
-			return;
-		}
+		// Get image URL
+		var url = com.neocodenetworks.faextender.Base.getDownloadUrl(doc, jQuery);
+		if (!url) return;
 
-		url = url.attr("href");
-		
 		var filelessurl = url.substr(0, url.lastIndexOf("/"));
 		var artist = filelessurl.substr((filelessurl.lastIndexOf("/") + 1));
 
@@ -149,11 +143,6 @@ com.neocodenetworks.faextender.ImageDownload = {
 			}
 			catch (err) { }
 		};
-	
-		// Fix protocol-less URLs
-		if (url.substr(0, 2) == "//") {
-			url = doc.location.protocol + url;
-		}
 
 		try {
 			var fileObject = prefs.getComplexValue("extensions.faext.download.directory", Components.interfaces.nsILocalFile);

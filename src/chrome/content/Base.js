@@ -80,6 +80,31 @@ com.neocodenetworks.faextender.Base = {
 		return doc.evaluate(path, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 	},
 
+	getDownloadLink: function(doc, jQuery) {
+		var downloadLink = jQuery("#submission div.actions b a:contains('Download')");
+		if (downloadLink.length == 0) {
+			// No download at all
+			com.neocodenetworks.faextender.Base.logError("Could not find download link, aborting");
+			return null;
+		}
+		
+		return downloadLink;
+	},
+
+	// Handle retrieving download URL
+	getDownloadUrl: function(doc, jQuery) {
+		var downloadLink = com.neocodenetworks.faextender.Base.getDownloadLink(doc, jQuery);
+		
+		var url = downloadLink.attr("href");
+		
+		// Fix protocol-less URLs
+		if (url.substr(0, 2) == "//") {
+			url = doc.location.protocol + url;
+		}
+		
+		return url;
+	},
+
 	// Log an error
 	logError: function(msg) {
 		var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
