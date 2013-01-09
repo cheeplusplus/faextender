@@ -111,6 +111,13 @@ com.neocodenetworks.faextender.ImageDownload = {
 			return;
 		}
 		
+		var tempObject = fileObject.clone();
+		tempObject.append(fname + ".faextmp");
+
+		if (tempObject.exists()) {
+			chgMsg("File operation already in progress.", "File " + fname + ".faextmp already exists.");
+		}
+		
 		// Store retrieval info directly into link for later
 		downloadLink.data("faext", {artist: artist, fname: fname, url: url, downloadSpan: downloadSpan, referrer: doc.location.href});
 
@@ -136,8 +143,11 @@ com.neocodenetworks.faextender.ImageDownload = {
 		var url = info.url;
 		var referrer = info.referrer;
 		var chgMsg = function(text,alt) {
-			info.downloadSpan.html(text);
-			info.downloadSpan.attr("title", alt);
+			try {
+				info.downloadSpan.html(text);
+				info.downloadSpan.attr("title", alt);
+			}
+			catch (err) { }
 		};
 	
 		// Fix protocol-less URLs
@@ -214,7 +224,7 @@ com.neocodenetworks.faextender.ImageDownload = {
 					{
 						var response = aRequest.QueryInterface(Components.interfaces.nsIHttpChannel);
 						if (response.requestSucceeded) {
-							chgMsg("File saved.","File " + fname + " saved.");
+							chgMsg("File saved.", "File " + fname + " saved.");
 							
 							if (fileObject.exists()) {
 								// Somehow it got saved already, don't be destructive
