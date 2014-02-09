@@ -17,7 +17,7 @@ com.neocodenetworks.faextender.Hotkeys = {
 		// Previous link
 		var prevClick = function() {
 			var href = jQuery("a.prev").attr("href");
-			if (href) doc.location.href = href;
+			if (href) doc.location.href = "https://www.furaffinity.net" + href;
 		}
 		
 		jQuery(doc).bind("keydown", "left", prevClick);
@@ -26,7 +26,7 @@ com.neocodenetworks.faextender.Hotkeys = {
 		// Next
 		var nextClick = function() {
 			var href = jQuery("a.next").attr("href");
-			if (href) doc.location.href = href;
+			if (href) doc.location.href = "https://www.furaffinity.net" + href;
 		}
 		
 		jQuery(doc).bind("keydown", "right", nextClick);
@@ -35,7 +35,7 @@ com.neocodenetworks.faextender.Hotkeys = {
 		// Favorite
 		jQuery(doc).bind("keydown", "f", function() {
 			var href = jQuery("a[href^='/fav/']:contains('+Add to Favorites')").attr("href");
-			if (href) doc.location.href = href;
+			if (href) doc.location.href = "https://www.furaffinity.net" + href;
 		});
 		
 		// Save
