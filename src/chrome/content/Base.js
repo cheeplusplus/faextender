@@ -105,6 +105,12 @@ com.neocodenetworks.faextender.Base = {
 		return url;
 	},
 
+	// Handle retrieving download URL
+	getDownloadUrlComponents: function(doc, jQuery) {
+		var downloadLink = com.neocodenetworks.faextender.Base.getDownloadLink(doc, jQuery);
+		return downloadLink[0];
+	},
+
 	// Log an error
 	logError: function(msg) {
 		var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);

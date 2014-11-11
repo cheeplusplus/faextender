@@ -14,10 +14,12 @@ com.neocodenetworks.faextender.ImageDownload = {
 		var jQuery = com.neocodenetworks.faextender.Base.getjQuery(doc);
 
 		// Get image URL
-		var url = com.neocodenetworks.faextender.Base.getDownloadUrl(doc, jQuery);
-		if (!url) return;
+		var components = com.neocodenetworks.faextender.Base.getDownloadUrlComponents(doc, jQuery);
+		if (!components) return;
 
-		var filelessurl = url.substr(0, url.lastIndexOf("/"));
+		var url = components.href;
+		var path = components.pathname;
+		var filelessurl = path.substr(0, path.lastIndexOf("/"));
 		var artist = filelessurl.substr((filelessurl.lastIndexOf("/") + 1));
 
 		// Check to see for non-pictures
@@ -90,7 +92,7 @@ com.neocodenetworks.faextender.ImageDownload = {
 			fileObject.append(artist);
 		}
 
-		var fname = url.substr(url.lastIndexOf("/") + 1);
+		var fname = path.substr(path.lastIndexOf("/") + 1);
 
 		var fext = fname.substr(fname.lastIndexOf(".") + 1);
 		if (fext == "") {
