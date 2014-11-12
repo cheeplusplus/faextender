@@ -33,18 +33,18 @@ com.neocodenetworks.faextender.TabDelay = function() {
 		delayLabel = document.getElementById("redirTime");
 		
 		if (countdownURL == "false") {
-			urlLabel.innerHTML = "Error: Invalid URL";
+			urlLabel.textContent = "Error: Invalid URL";
 			return;
 		}
 		else if ((countdownTimer == "false") || (countdownTimer < 1)) {
-			//delayLabel.innerHTML = "Error: Invalid delay time";
+			//delayLabel.textContent = "Error: Invalid delay time";
 			//return;
 			
 			// Instead of aborting with an error, redirect immediately
 			countdownTimer = 0;
 		}
 	
-		urlLabel.innerHTML = countdownURL;
+		urlLabel.textContent = countdownURL;
 		urlLabel.href = countdownURL;
 	
 		tabDelayCountdown();
@@ -54,15 +54,16 @@ com.neocodenetworks.faextender.TabDelay = function() {
 		if (countdownTimer > 0) {
 	
 			document.title = "FurAffinity Redirecting in " + countdownTimer;
-			delayLabel.innerHTML = "in " + countdownTimer;
+			labelText = "in " + countdownTimer;
 			
 			if (countdownTimer == 1) {
-				delayLabel.innerHTML += " second.";
+				labelText += " second.";
 			}
 			else {
-				delayLabel.innerHTML += " seconds.";
+				labelText += " seconds.";
 			}
 			
+			delayLabel.textContent = labelText;
 			countdownTimer -= 1;
 			setTimeout(tabDelayCountdown, 1000);
 		}
