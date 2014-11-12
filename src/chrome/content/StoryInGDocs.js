@@ -19,13 +19,13 @@ com.neocodenetworks.faextender.StoryInGDocs = {
 		if (!url) return;
 
 		// Make sure this is a story
-		if (url.indexOf("stories") < 0) return;
+		if (url.indexOf("/stories/") < 0) return;
 
 		// Get the parent <b>
 		var dLinkContainer = downloadLink.parent();
 
 		// Append new link
-		jQuery("<span> | <b><a id=\"__ext_fa_gdoclink\" href=\"https://docs.google.com/viewer?url=" + url + "\">View in GDocs</a></b></span>").insertAfter(dLinkContainer);
+		jQuery("<span> | <b><a id=\"__ext_fa_gdoclink\" href=\"https://docs.google.com/viewer?url=" + encodeURIComponent(url) + "\">View in GDocs</a></b></span>").insertAfter(dLinkContainer);
 	}
 }
 

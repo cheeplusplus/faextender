@@ -16,19 +16,6 @@ com.neocodenetworks.faextender.ImageDownload = {
 		// Get image URL
 		var components = com.neocodenetworks.faextender.Base.getDownloadUrlComponents(doc, jQuery);
 		if (!components) return;
-
-		var url = components.href;
-		var path = components.pathname;
-		var filelessurl = path.substr(0, path.lastIndexOf("/"));
-		var artist = filelessurl.substr((filelessurl.lastIndexOf("/") + 1));
-
-		// Check to see for non-pictures
-		if ((artist == "stories") || (artist == "poetry") || (artist == "music")) {
-			// Get artist name for non-pictures
-			var type = filelessurl.substr(0, filelessurl.lastIndexOf("/"));
-			var pre = filelessurl.substr(type.lastIndexOf("/") + 1);
-			artist = pre.substr(0, pre.lastIndexOf("/"));
-		}
 		
 		// Set up ID links
 		var downloadLink = jQuery("#__ext_fa_imgdl");
@@ -40,8 +27,7 @@ com.neocodenetworks.faextender.ImageDownload = {
 		}
 
 		// Find our download text injection point
-		var downloadInsertPos;
-		downloadInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td"));
+		var downloadInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td"));
 		if (downloadInsertPos.length == 0) {
 			// Can't find either
 			com.neocodenetworks.faextender.Base.logError("Bad download inject xpath, aborting");
@@ -76,14 +62,9 @@ com.neocodenetworks.faextender.ImageDownload = {
 		}
 		
 		// Pretty artist name support
+		var artist = components.artist;
 		if (prefs.prefHasUserValue("extensions.faext.download.prettyartist")) {
-			var artistName = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[1]/a")).text();
-			if (artistName) {
-				artist = artistName;
-			}
-			else {
-				com.neocodenetworks.faextender.Base.logError("Unable to retrieve pretty artist name, falling back on default");
-			}
+			artist = components.pretty_artist;
 		}
 
 		var fileObject = prefs.getComplexValue("extensions.faext.download.directory", Components.interfaces.nsILocalFile);
@@ -92,30 +73,27 @@ com.neocodenetworks.faextender.ImageDownload = {
 			fileObject.append(artist);
 		}
 
-		var fname = path.substr(path.lastIndexOf("/") + 1);
+		fileObject.append(components.filename);
 
-		var fext = fname.substr(fname.lastIndexOf(".") + 1);
-		if (fext == "") {
+		if (!components.extension) {
 			chgMsg("Error: No extension", "This file does not have an file extension. Please save it manually.");
 			return;
 		}
 
-		fileObject.append(fname);
-
 		if (fileObject.exists()) {
-			chgMsg("File already exists.","File " + fname + " already exists.");
+			chgMsg("File already exists.","File " + components.filename + " already exists.");
 			return;
 		}
 		
 		var tempObject = fileObject.clone();
-		tempObject.append(fname + ".faextmp");
+		tempObject.append(components.filename + ".faextmp");
 
 		if (tempObject.exists()) {
-			chgMsg("File operation already in progress.", "File " + fname + ".faextmp already exists.");
+			chgMsg("File operation already in progress.", "File " + components.filename + ".faextmp already exists.");
 		}
 		
 		// Store retrieval info directly into link for later
-		downloadLink.data("faext", {artist: artist, fname: fname, url: url, downloadSpan: downloadSpan, referrer: doc.location.href});
+		downloadLink.data("faext", {artist: artist, fname: components.filename, url: components.url, downloadSpan: downloadSpan, referrer: doc.location.href});
 
 		// Handle link onclick event
 		downloadLink.click(com.neocodenetworks.faextender.ImageDownload.DownloadClickEvent);

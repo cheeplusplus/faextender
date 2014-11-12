@@ -16,8 +16,8 @@ com.neocodenetworks.faextender.Hotkeys = {
 		
 		// Previous link
 		var prevClick = function() {
-			var href = jQuery("a.prev").attr("href");
-			if (href) doc.location.href = "https://www.furaffinity.net" + href;
+			var href = jQuery("a.prev")[0].href;
+			if (href) doc.location.href = href;
 		}
 		
 		jQuery(doc).bind("keydown", "left", prevClick);
@@ -25,8 +25,8 @@ com.neocodenetworks.faextender.Hotkeys = {
 		
 		// Next
 		var nextClick = function() {
-			var href = jQuery("a.next").attr("href");
-			if (href) doc.location.href = "https://www.furaffinity.net" + href;
+			var href = jQuery("a.next")[0].href;
+			if (href) doc.location.href = href;
 		}
 		
 		jQuery(doc).bind("keydown", "right", nextClick);
