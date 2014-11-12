@@ -8,7 +8,8 @@
 		em:creator="AndrewNeo"
 		em:homepageURL="http://andrewneo.github.com/faextender/"
 		em:optionsURL="chrome://faextender/content/Settings.xul"
-		em:iconURL="resource://faextender/icon.png">
+		em:iconURL="resource://faextender/icon.png"
+		em:type="2">
 			<em:targetApplication RDF:resource="rdf:#$vlwPh1" />
 	</RDF:Description>
 	<RDF:Description RDF:about="rdf:#$vlwPh1"

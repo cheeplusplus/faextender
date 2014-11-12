@@ -5,6 +5,8 @@ if (!com.neocodenetworks) { com.neocodenetworks = {}; }
 if (!com.neocodenetworks.faextender) { com.neocodenetworks.faextender = {}; }
 
 com.neocodenetworks.faextender.Base = {
+	isDebug: false,
+
 	// Get a jQuery instance
 	getjQuery: function(doc) {
 		// Load directly into our injection window
@@ -133,6 +135,8 @@ com.neocodenetworks.faextender.Base = {
 
 	// Log an error
 	logError: function(msg) {
+		if (!com.neocodenetworks.faextender.Base.isDebug) return;
+
 		var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
 		consoleService.logStringMessage("FAExtender error: " + msg);
 	},
@@ -140,6 +144,8 @@ com.neocodenetworks.faextender.Base = {
 		com.neocodenetworks.faextender.Base.logError(err.name + " error @ line " + err.lineNumber + ":\r\n" + err.message);
 	},
 	debugMsg: function(msg, obj) {
+		if (!com.neocodenetworks.faextender.Base.isDebug) return;
+
 		var consoleService = Components.classes["@mozilla.org/consoleservice;1"].getService(Components.interfaces.nsIConsoleService);
 		consoleService.logStringMessage("FAExtender debug: " + msg);
 		
