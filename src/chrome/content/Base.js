@@ -17,9 +17,9 @@ com.neocodenetworks.faextender.Base = {
 			return jQueryEnv.window.jQuery;
 		}
 		
-		// Components.utils.import("resource://faextender/jquery-1.7.min.js", jQueryEnv); // This doesn't work for some reason
+		// Components.utils.import("resource://faextender/jquery.min.js", jQueryEnv); // This doesn't work for some reason
 		var loader = Components.classes["@mozilla.org/moz/jssubscript-loader;1"].getService(Components.interfaces.mozIJSSubScriptLoader);  
-		loader.loadSubScript("resource://faextender/jquery-1.7.min.js", jQueryEnv);
+		loader.loadSubScript("resource://faextender/jquery.min.js", jQueryEnv);
 		
 		var jQuery = jQueryEnv.window.jQuery;
 		
