@@ -113,7 +113,7 @@ com.neocodenetworks.faextender.ImageDownload = {
 		
 		var info = jQuery(thisLink).data("faext");
 		var artist = info.artist;
-		var fname = info.fname;
+		var fname = decodeURI(info.fname);
 		var url = info.url;
 		var referrer = info.referrer;
 		var chgMsg = function(text,alt) {
