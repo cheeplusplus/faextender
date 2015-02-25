@@ -220,13 +220,12 @@ com.neocodenetworks.faextender.ImageDownload = {
 
 			var privacyContext = doc.defaultView.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsIWebNavigation).QueryInterface(Components.interfaces.nsILoadContext);
 
-
 			// Firefox 36 added an 8th arg in the middle of saveURI
 			if (persist.saveURI.length < 8) {
 				persist.saveURI(uri, cachekey, referrer, null, null, tempObject, privacyContext);
-                        } else {
+			} else {
 				persist.saveURI(uri, cachekey, referrer, null, null, null, tempObject, privacyContext);
-                        }
+			}
 		}
 		catch(err) {
 			com.neocodenetworks.faextender.Base.logException(err);
