@@ -127,7 +127,7 @@ com.neocodenetworks.faextender.Base = {
 		var artist = artistPath.replace("/user/", "").replace("/", "");
 		var prettyArtist = artistLink.text();
 
-		var fname = path.substr(path.lastIndexOf("/") + 1);
+		var fname = decodeURI(path.substr(path.lastIndexOf("/") + 1));
 		var fext = fname.substr(fname.lastIndexOf(".") + 1);
 
 		return { "url": url, "path": path, "artist": artist, "pretty_artist": prettyArtist, "filename": fname, "extension": fext };
