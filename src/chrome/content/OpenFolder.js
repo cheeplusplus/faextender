@@ -58,7 +58,7 @@ com.neocodenetworks.faextender.OpenFolder = {
 		openFolderLink = jQuery("<a>").attr("id", "__ext_fa_opendir").attr("href", "javascript:void(0);").attr("title", "Open the target folder in your shell.").text("Open folder");
 
 		// Find our folder open injection point
-		var folderOpenInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[1]"));
+		var folderOpenInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td[1]/table/tbody/tr[2]/td/table/tbody/tr[1]/td"));
 		if (folderOpenInsertPos.length > 0) {
 			// Inject text
 			folderOpenInsertPos.append("[").append(openFolderLink).append("]");

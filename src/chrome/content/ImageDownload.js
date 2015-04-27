@@ -27,7 +27,7 @@ com.neocodenetworks.faextender.ImageDownload = {
 		}
 
 		// Find our download text injection point
-		var downloadInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[1]/td"));
+		var downloadInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td[1]/table/tbody/tr[1]/td"));
 		if (downloadInsertPos.length == 0) {
 			// Can't find either
 			com.neocodenetworks.faextender.Base.logError("Bad download inject xpath, aborting");

@@ -116,7 +116,7 @@ com.neocodenetworks.faextender.Base = {
 			return null;
 		}
 
-		var artistLink = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table[2]/tbody/tr[1]/td[1]/a"));
+		var artistLink = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td[1]/table/tbody/tr[2]/td/table/tbody/tr[1]/td/a"));
 		if (artistLink.length == 0) {
 			// Can't find artist link
 			com.neocodenetworks.faextender.Base.logError("Could not find artist xpath");
