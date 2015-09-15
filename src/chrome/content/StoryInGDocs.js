@@ -29,4 +29,4 @@ com.neocodenetworks.faextender.StoryInGDocs = {
 	}
 }
 
-com.neocodenetworks.faextender.Base.registerTarget(com.neocodenetworks.faextender.StoryInGDocs.Bind, "/view/");
+com.neocodenetworks.faextender.Base.registerTarget(com.neocodenetworks.faextender.StoryInGDocs.Bind, ["/view/", "/full/"]);

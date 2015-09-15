@@ -138,5 +138,5 @@ com.neocodenetworks.faextender.OpenFolder = {
 	}
 }
 
-com.neocodenetworks.faextender.Base.registerTarget(com.neocodenetworks.faextender.OpenFolder.ForView, "/view/");
+com.neocodenetworks.faextender.Base.registerTarget(com.neocodenetworks.faextender.OpenFolder.ForView, ["/view/", "/full/"]);
 com.neocodenetworks.faextender.Base.registerTarget(com.neocodenetworks.faextender.OpenFolder.ForUser, "/user/");

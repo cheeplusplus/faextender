@@ -67,4 +67,4 @@ com.neocodenetworks.faextender.Hotkeys = {
 	}
 }
 
-com.neocodenetworks.faextender.Base.registerTarget(com.neocodenetworks.faextender.Hotkeys.Bind, "/view/");
+com.neocodenetworks.faextender.Base.registerTarget(com.neocodenetworks.faextender.Hotkeys.Bind, ["/view/", "/full/"]);
