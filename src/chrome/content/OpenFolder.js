@@ -58,7 +58,7 @@ com.neocodenetworks.faextender.OpenFolder = {
 		openFolderLink = jQuery("<a>").attr("id", "__ext_fa_opendir").attr("href", "javascript:void(0);").attr("title", "Open the target folder in your shell.").text("Open folder");
 
 		// Find our folder open injection point
-		var folderOpenInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "id('submission')/table/tbody/tr[1]/td[1]/table/tbody/tr[2]/td/table/tbody/tr[1]/td"));
+		var folderOpenInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "/html/body/div/div[3]/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[1]/td[1]"));
 		if (folderOpenInsertPos.length > 0) {
 			// Inject text
 			folderOpenInsertPos.append("[").append(openFolderLink).append("]");
@@ -116,7 +116,7 @@ com.neocodenetworks.faextender.OpenFolder = {
 		openFolderLink = jQuery("<a>").attr("id", "__ext_fa_opendir").attr("href", "javascript:void(0);").attr("title", "Open the target folder in your shell.").text("Open folder");
 
 		// Find our folder open injection point
-		var folderOpenInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "/html/body/div/table[2]/tbody/tr/td/table/tbody/tr/td/table[1]/tbody/tr/td/div"));
+		var folderOpenInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "/html/body/div/div[3]/table[1]/tbody/tr/td/div"));
 		if (folderOpenInsertPos.length > 0) {
 			// Inject text
 			jQuery("<b>").append(openFolderLink).appendTo(folderOpenInsertPos);
