@@ -3,7 +3,7 @@
 	<RDF:Description RDF:about="urn:mozilla:install-manifest"
 		em:name="FurAffinity Extender"
 		em:id="faextender@neocodenetworks.com"
-		em:version="2.2.6"
+		em:version="2.2.6.1"
 		em:description="Add browsing features to FurAffinity like easy image downloading, opening galleries in tabs, and more."
 		em:creator="AndrewNeo"
 		em:homepageURL="http://andrewneo.github.com/faextender/"
