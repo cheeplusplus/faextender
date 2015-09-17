@@ -77,16 +77,11 @@ com.neocodenetworks.faextender.Base = {
 		return false;
 	},
 
-	// Wrap xpath handling
-	getXPath: function(doc, path) {
-		return doc.evaluate(path, doc, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-	},
-
 	getDownloadLink: function(doc, jQuery) {
-		var downloadLink = jQuery("#page-submission div.actions b a:contains('Download')");
+		var downloadLink = jQuery("#page-submission div.actions>b>a:contains('Download')");
 		if (downloadLink.length == 0) {
 			// No download at all
-			com.neocodenetworks.faextender.Base.logError("Could not find download link, aborting");
+			com.neocodenetworks.faextender.Base.logError("Could not find download link");
 			return null;
 		}
 		
@@ -98,6 +93,17 @@ com.neocodenetworks.faextender.Base = {
 		var downloadLink = com.neocodenetworks.faextender.Base.getDownloadLink(doc, jQuery);
 		var url = downloadLink[0].href;
 		return url;
+	},
+
+	getArtistLink: function(doc, jQuery) {
+		var artistLink = jQuery("#page-submission table.maintable td.cat>a[href*='/user/']");
+		if (artistLink.length == 0) {
+			// Can't find artist link
+			com.neocodenetworks.faextender.Base.logError("Could not find artist selector");
+			return null;
+		} 
+
+		return artistLink;
 	},
 
 	// Handle retrieving download URL
@@ -116,10 +122,8 @@ com.neocodenetworks.faextender.Base = {
 			return null;
 		}
 
-		var artistLink = jQuery("#page-submission table.maintable:first table.maintable td.cat a[href*='/user/']");
-		if (artistLink.length == 0) {
-			// Can't find artist link
-			com.neocodenetworks.faextender.Base.logError("Could not find artist xpath");
+		var artistLink = com.neocodenetworks.faextender.Base.getArtistLink(doc, jQuery);
+		if (!artistLink) {
 			return null;
 		}
 

@@ -27,10 +27,10 @@ com.neocodenetworks.faextender.ImageDownload = {
 		}
 
 		// Find our download text injection point
-		var downloadInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "/html/body/div/div[3]/div/table/tbody/tr[1]/td/table/tbody/tr[1]/th"));
+		var downloadInsertPos = jQuery("#page-submission .maintable:first th.cat");
 		if (downloadInsertPos.length == 0) {
 			// Can't find either
-			com.neocodenetworks.faextender.Base.logError("Bad download inject xpath, aborting");
+			com.neocodenetworks.faextender.Base.logError("Bad download inject selector, aborting");
 			return;
 		}
 		

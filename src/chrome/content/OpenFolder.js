@@ -58,13 +58,18 @@ com.neocodenetworks.faextender.OpenFolder = {
 		openFolderLink = jQuery("<a>").attr("id", "__ext_fa_opendir").attr("href", "javascript:void(0);").attr("title", "Open the target folder in your shell.").text("Open folder");
 
 		// Find our folder open injection point
-		var folderOpenInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "/html/body/div/div[3]/div/table/tbody/tr[1]/td/table/tbody/tr[2]/td/table/tbody/tr[1]/td[1]"));
+		var artistLink = com.neocodenetworks.faextender.Base.getArtistLink(doc, jQuery);
+		if (!artistLink || artistLink.length == 0) {
+			return null;
+		}
+
+		var folderOpenInsertPos = artistLink.parent();
 		if (folderOpenInsertPos.length > 0) {
 			// Inject text
 			folderOpenInsertPos.append("[").append(openFolderLink).append("]");
 		}
 		else {
-			com.neocodenetworks.faextender.Base.logError("Bad folder open xpath, aborting");
+			com.neocodenetworks.faextender.Base.logError("Bad folder open selector, aborting");
 			return;
 		}
 
@@ -116,13 +121,13 @@ com.neocodenetworks.faextender.OpenFolder = {
 		openFolderLink = jQuery("<a>").attr("id", "__ext_fa_opendir").attr("href", "javascript:void(0);").attr("title", "Open the target folder in your shell.").text("Open folder");
 
 		// Find our folder open injection point
-		var folderOpenInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, "/html/body/div/div[3]/table[1]/tbody/tr/td/div"));
+		var folderOpenInsertPos = jQuery("div.tab:first");
 		if (folderOpenInsertPos.length > 0) {
 			// Inject text
 			jQuery("<b>").append(openFolderLink).appendTo(folderOpenInsertPos);
 		}
 		else {
-			com.neocodenetworks.faextender.Base.logError("Bad folder open xpath, aborting");
+			com.neocodenetworks.faextender.Base.logError("Bad folder open selector, aborting");
 			return;
 		}
 

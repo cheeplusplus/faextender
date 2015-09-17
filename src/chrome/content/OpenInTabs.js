@@ -28,33 +28,28 @@ com.neocodenetworks.faextender.OpenInTabs = {
 		// Create Open in Tabs link
 		var openLink = jQuery("<a>").attr("id", "__ext_fa_opentabs").attr("href", "javascript:void(0);").text("Open images in tabs");
 
-		// Find our tabs open injection point (submissions then general)
+		// Find our tabs open injection point
+		// Try submissions first
 		var tabsOpenInsertPos = jQuery("#messagecenter-submissions div.actions");
 		if (tabsOpenInsertPos.length > 0) {
 			tabsOpenInsertPos.first().after(openLink);
 		}
 		else {
-			// Try class injection (gallery/scraps)
-			var testPath = jQuery("#page-galleryscraps div.page-options");
+			// Try other pages
+			var testPaths = [
+				"#page-galleryscraps div.page-options", // Gallery/scraps
+				"#favorites td.cat>table.maintable>tbody>tr>td:nth(1)" // Favorites
+			];
 
-			if (testPath.length > 0) {
-				tabsOpenInsertPos = testPath;
-			} else {
-				// Try xpath injection
-				var testPaths = [
-					"/html/body/div/div[3]/div/table[2]/tbody/tr/td/table/tbody/tr[1]/td[2]" // Favorites
-				];
-				
-				// Iterate through each test path until we find a valid one
-				for (var i = 0; i < testPaths.length; i++) {
-					tabsOpenInsertPos = jQuery(com.neocodenetworks.faextender.Base.getXPath(doc, testPaths[i]));
-					if (tabsOpenInsertPos.length > 0) break;
-				}
+			// Iterate through each test path until we find a valid one
+			for (var i = 0; i < testPaths.length; i++) {
+				tabsOpenInsertPos = jQuery(testPaths[i]);
+				if (tabsOpenInsertPos.length > 0) break;
 			}
 
 			// Abort if not found
 			if (tabsOpenInsertPos.length == 0) {
-				com.neocodenetworks.faextender.Base.logError("Bad tabs open xpath, aborting");
+				com.neocodenetworks.faextender.Base.logError("Bad tabs open selector, aborting");
 				return;
 			}
 			
