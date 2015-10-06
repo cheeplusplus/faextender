@@ -5,7 +5,7 @@ if (!com.neocodenetworks) { com.neocodenetworks = {}; }
 if (!com.neocodenetworks.faextender) { com.neocodenetworks.faextender = {}; }
 
 com.neocodenetworks.faextender.Base = {
-	isDebug: true,
+	isDebug: false,
 
 	// Get a jQuery instance
 	getjQuery: function(doc) {
