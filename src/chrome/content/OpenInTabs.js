@@ -10,7 +10,7 @@ com.neocodenetworks.faextender.OpenInTabs = {
 		var jQuery = com.neocodenetworks.faextender.Base.getjQuery(doc);
 
 		// Collect all view page links
-		var tabLinks = jQuery("a[href*='/view/']");
+		var tabLinks = jQuery("figure figcaption a[href*='/view/']");
 		
 		// Exit if no valid links were found so we don't inject
 		if (tabLinks.length == 0) { return; }
